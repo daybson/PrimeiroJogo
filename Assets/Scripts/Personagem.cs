@@ -6,24 +6,17 @@ public class Personagem : MonoBehaviour
 {
     public Transform transformMira;
     public Rigidbody rigidbody;
-    public float VelocidadePulo;
-    public int pulosMaximos;
-    public int pulosContador;
-
-
-    private void Start()
-    {
-        this.rigidbody = GetComponent<Rigidbody>();
-    }
+    public float ForcaPulo;
+    public int PulosMaximos;
+    public int PuloContador;
 
     void Update()
     {
         //Realiza o pulo
-        if (this.pulosContador < this.pulosMaximos && 
-            Input.GetKeyDown(KeyCode.Space))
+        if (this.PuloContador < this.PulosMaximos && Input.GetKeyDown(KeyCode.Space))
         {
-            this.pulosContador++;
-            this.rigidbody.AddForce(Vector3.up * this.VelocidadePulo, ForceMode.Impulse);
+            this.rigidbody.AddForce(Vector3.up * this.ForcaPulo, ForceMode.Impulse);
+            this.PuloContador++;
         }
 
         //Dispara Projétil
@@ -35,12 +28,9 @@ public class Personagem : MonoBehaviour
         }
     }
 
-
-    public void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag.Equals("plataforma"))
-        {
-            this.pulosContador = 0;
-        }
+        if (collision.transform.tag.Equals("Piso"))
+            this.PuloContador = 0;
     }
 }
