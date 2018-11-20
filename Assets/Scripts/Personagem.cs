@@ -14,6 +14,15 @@ public class Personagem : MonoBehaviour
 
     public float VelocidadeMovimento;
 
+    public Transform PosicaoRespawnProjetil;
+
+    public int PontosDeVida;
+
+    void Start()
+    {
+        this.PontosDeVida = 100;
+    }
+
     void Update()
     {
         //Obtem o movimento horizontal do mouse
@@ -28,13 +37,21 @@ public class Personagem : MonoBehaviour
         }
 
 
+        var orientacaoMiraX = Input.GetAxis("Mouse Y");
+        if (orientacaoMiraX != 0)
+        {
+            var rotacaoDeltaMira = Quaternion.Euler(orientacaoMiraX * this.VelocidadeRotacao * Time.deltaTime, 0, 0);
+            this.transformMira.localRotation = this.transformMira.localRotation * rotacaoDeltaMira;
+        }
+
+
         //Obtem entrada do usuário com teclado nos eixos vertical e horizontal
         var entradaEixosMovimento = new Vector3(Input.GetAxis("Horizontal"),
                                                 0,
                                                 Input.GetAxis("Vertical"));
 
         //Se usuário pressionou algum eixo
-        if(entradaEixosMovimento != Vector3.zero)
+        if (entradaEixosMovimento != Vector3.zero)
         {
             //Converte a entrada do eixo de movimento do espaço global para espaço local do personagem
             entradaEixosMovimento = transform.TransformDirection(entradaEixosMovimento);
@@ -57,7 +74,7 @@ public class Personagem : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GameObject projetil = (GameObject)Instantiate(Resources.Load("Prefabs/Projetil"));
-            projetil.transform.position = this.transformMira.position;
+            projetil.transform.position = this.PosicaoRespawnProjetil.position;
             projetil.transform.forward = this.transformMira.forward;
         }
     }
@@ -66,5 +83,10 @@ public class Personagem : MonoBehaviour
     {
         if (collision.transform.tag.Equals("Piso"))
             this.PuloContador = 0;
+
+        if (collision.transform.tag.Equals("Inimigo"))
+        {
+            this.PontosDeVida -= 10;
+        }
     }
 }
