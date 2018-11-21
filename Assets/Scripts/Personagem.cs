@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Personagem : MonoBehaviour
 {
@@ -18,9 +19,12 @@ public class Personagem : MonoBehaviour
 
     public int PontosDeVida;
 
+    public Text textPontosDeVida;
+
     void Start()
     {
         this.PontosDeVida = 100;
+        this.textPontosDeVida.text = this.PontosDeVida.ToString();
     }
 
     void Update()
@@ -87,6 +91,7 @@ public class Personagem : MonoBehaviour
         if (collision.transform.tag.Equals("Inimigo"))
         {
             this.PontosDeVida -= 10;
+            this.textPontosDeVida.text = this.PontosDeVida.ToString();
         }
     }
 }
