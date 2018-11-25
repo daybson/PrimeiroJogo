@@ -17,7 +17,10 @@ public class Inimigo : MonoBehaviour
 
     void Update()
     {
-        transform.LookAt(this.Personagem.transform.position);
+        Vector3 posicaoNoPlano = new Vector3(this.Personagem.transform.position.x, 
+            transform.position.y, 
+            this.Personagem.transform.position.z);
+        transform.LookAt(posicaoNoPlano);
 
         transform.Translate(this.transform.forward * this.VelocidadeMovimento * Time.deltaTime, Space.World);
     }
