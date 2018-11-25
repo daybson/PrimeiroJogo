@@ -14,7 +14,7 @@ public class Inimigo : MonoBehaviour
         this.PontosDeVida = 3;
     }
 
-    
+
     void Update()
     {
         transform.LookAt(this.Personagem.transform.position);

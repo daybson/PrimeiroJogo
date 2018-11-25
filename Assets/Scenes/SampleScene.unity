@@ -241,6 +241,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 60, y: 115, z: 650}
+--- !u!1 &326162949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 326162951}
+  - component: {fileID: 326162952}
+  m_Layer: 0
+  m_Name: ControladorJogo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &326162951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 326162949}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.3791504, y: 1.6740723, z: 4.1118164}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &326162952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 326162949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1328ff2dd8e2e0d42a2665e67c7ec155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Inimigo: {fileID: 1644238716}
+  Personagem: {fileID: 524903784}
 --- !u!1001 &459213200
 Prefab:
   m_ObjectHideFlags: 0
@@ -283,6 +325,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a262a4c68b0d442418931c93e492caa4, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &524903784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114039549842277464, guid: 892d405666c01a94897d0cb845275c03,
+    type: 2}
+  m_PrefabInternal: {fileID: 1930689067}
+  m_Script: {fileID: 11500000, guid: 8cc7fa92b9a3f9048b8506f07e6bc1a9, type: 3}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +666,7 @@ GameObject:
   - component: {fileID: 1386753901}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Piso
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -687,7 +735,7 @@ Transform:
   m_GameObject: {fileID: 1386753900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -697,6 +745,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4759658581598542, guid: 892d405666c01a94897d0cb845275c03,
     type: 2}
   m_PrefabInternal: {fileID: 1930689067}
+--- !u!114 &1644238716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114802205001823950, guid: a262a4c68b0d442418931c93e492caa4,
+    type: 2}
+  m_PrefabInternal: {fileID: 459213200}
+  m_Script: {fileID: 11500000, guid: 67ef960c74cbabd44b4499a15b7fad80, type: 3}
 --- !u!1001 &1930689067
 Prefab:
   m_ObjectHideFlags: 0
@@ -771,7 +825,7 @@ Prefab:
     - target: {fileID: 136445341848309814, guid: 892d405666c01a94897d0cb845275c03,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114039549842277464, guid: 892d405666c01a94897d0cb845275c03,
         type: 2}
@@ -787,6 +841,33 @@ Prefab:
       propertyPath: textPontosDeVida
       value: 
       objectReference: {fileID: 1147905703}
+    - target: {fileID: 54789672712961056, guid: 892d405666c01a94897d0cb845275c03,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 54789672712961056, guid: 892d405666c01a94897d0cb845275c03,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54789672712961056, guid: 892d405666c01a94897d0cb845275c03,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882572354886820, guid: 892d405666c01a94897d0cb845275c03, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414508700298956, guid: 892d405666c01a94897d0cb845275c03, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286953716456288, guid: 892d405666c01a94897d0cb845275c03, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 892d405666c01a94897d0cb845275c03, type: 2}
   m_IsPrefabAsset: 0
